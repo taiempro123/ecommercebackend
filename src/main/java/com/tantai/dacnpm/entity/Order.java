@@ -16,28 +16,28 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "oder")
+@Table(name = "order")
 public class Order extends BaseEntity{
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private double total;
-
-    @Column(nullable = false)
-    private int status;
-
-    @Column(nullable = false, precision = 10, scale = 2)
-    private double discount;
-
-    @Column( nullable = false, length = 35)
+    @Column( name = "name",nullable = false, length = 35)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "total",nullable = false, precision = 10, scale = 2)
+    private double total;
+
+    @Column(name = "status",nullable = false)
+    private int status;
+
+    @Column(name = "discount",nullable = false, precision = 10, scale = 2)
+    private double discount;
+
+    @Column(name = "phone",nullable = false)
     private String phone;
 
-    @Column(nullable = false)
+    @Column(name = "email",nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(name = "line",nullable = false)
     private String line;
 
     @OneToMany(

@@ -1,11 +1,5 @@
 package com.tantai.dacnpm.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
-
 public class UserDto {
     private long id;
     private String username;
