@@ -3,7 +3,7 @@ package com.tantai.dacnpm.controller;
 import com.tantai.dacnpm.config.JwtUtil;
 import com.tantai.dacnpm.entity.User;
 import com.tantai.dacnpm.repo.UserRepository;
-import com.tantai.dacnpm.service.JwtUserDetailsService;
+import com.tantai.dacnpm.service.User.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ public class JwtAuthenticationController {
     private UserRepository repo;
 
     @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
+    private JwtUserDetailsServiceImpl jwtUserDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;

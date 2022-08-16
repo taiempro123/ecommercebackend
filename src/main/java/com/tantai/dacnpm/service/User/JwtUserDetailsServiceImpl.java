@@ -1,4 +1,4 @@
-package com.tantai.dacnpm.service;
+package com.tantai.dacnpm.service.User;
 
 import com.tantai.dacnpm.entity.User;
 import com.tantai.dacnpm.repo.UserRepository;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class JwtUserDetailsService implements UserDetailsService {
+public class JwtUserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository repo;
 

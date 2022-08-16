@@ -1,6 +1,6 @@
 package com.tantai.dacnpm.config;
 
-import com.tantai.dacnpm.service.JwtUserDetailsService;
+import com.tantai.dacnpm.service.User.JwtUserDetailsServiceImpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +19,7 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
+    private JwtUserDetailsServiceImpl jwtUserDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;

@@ -2,8 +2,8 @@ package com.tantai.dacnpm.controller;
 
 import com.tantai.dacnpm.config.JwtUtil;
 import com.tantai.dacnpm.entity.User;
-import com.tantai.dacnpm.service.JwtUserDetailsService;
-import com.tantai.dacnpm.service.UserService;
+import com.tantai.dacnpm.service.User.JwtUserDetailsServiceImpl;
+import com.tantai.dacnpm.service.User.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +19,15 @@ import java.util.Map;
 @CrossOrigin
 @RequestMapping("/api")
 public class APIController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
-    private JwtUserDetailsService jwtUserDetailsService;
+    private JwtUserDetailsServiceImpl jwtUserDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;
 
-    public APIController(UserService userService) {
+    public APIController(UserServiceImpl userService) {
         this.userService = userService;
 
     }
@@ -49,23 +49,8 @@ public class APIController {
 
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getUser (@PathVariable("id") Long id) {
-        return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getById(id), HttpStatus.OK);
     }
-
-    @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser (@PathVariable("id") Long id, @RequestBody Map<String, Object> user) {
-        User newUser = new User(
-                (String) user.get("username"),
-                (String) user.get("password"),
-                (String) user.get("email"),
-                (String) user.get("name"),
-                (String) user.get("address"),
-                (String) user.get("phone")
-        );
-
-        return new ResponseEntity<>(userService.updateUser(id, newUser), HttpStatus.OK);
-    }
-
 
     @Transactional
     @DeleteMapping("/users/{id}")
