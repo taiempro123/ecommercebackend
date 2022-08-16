@@ -2,7 +2,6 @@ package com.tantai.dacnpm.controller;
 
 import com.tantai.dacnpm.config.JwtUtil;
 import com.tantai.dacnpm.entity.User;
-import com.tantai.dacnpm.entity.CartItem;
 import com.tantai.dacnpm.service.JwtUserDetailsService;
 import com.tantai.dacnpm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,11 +66,11 @@ public class APIController {
         return new ResponseEntity<>(userService.updateUser(id, newUser), HttpStatus.OK);
     }
 
-    @GetMapping("/users/{id}/cart")
-    public ResponseEntity<List<CartItem>> getUserCart (@PathVariable("id") Long id) {
-        System.out.println(userService.getUser(id).getCartItems().size());
-        return new ResponseEntity<>(userService.getUser(id).getCartItems(), HttpStatus.OK);
-    }
+//    @GetMapping("/users/{id}/cart")
+//    public ResponseEntity<List<CartItem>> getUserCart (@PathVariable("id") Long id) {
+//        System.out.println(userService.getUser(id).getCartItems().size());
+//        return new ResponseEntity<>(userService.getUser(id).getCartItems(), HttpStatus.OK);
+//    }
 
 
     @Transactional

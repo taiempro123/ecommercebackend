@@ -1,6 +1,9 @@
 package com.tantai.dacnpm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,11 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "product")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+public class Product extends BaseEntity {
     @Column(nullable = false, length = 128)
     private String name;
 
@@ -68,6 +67,13 @@ public class Product {
             inverseJoinColumns = {
                     @JoinColumn(name = "tag_id")})
     private List<Tag> tags;
+
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "products", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private User user;
 
     public Product () {
     }

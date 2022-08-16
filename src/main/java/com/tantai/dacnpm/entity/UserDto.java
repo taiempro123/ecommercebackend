@@ -14,11 +14,6 @@ public class UserDto {
     private String name;
     private String address;
     private String phone;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "pk.user")
-    private List<CartItem> cartItems = new ArrayList<>();
-
     public long getId() {
         return id;
     }
@@ -75,11 +70,4 @@ public class UserDto {
         this.phone = phone;
     }
 
-    public List<CartItem> getCartItems() {
-        return cartItems;
-    }
-
-    public void setCartItems(List<CartItem> cartItems) {
-        this.cartItems = cartItems;
-    }
 }

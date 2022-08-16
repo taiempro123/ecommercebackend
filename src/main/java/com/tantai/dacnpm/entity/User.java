@@ -31,21 +31,29 @@ public class User {
     @Column(nullable = false, length = 15)
     private String phone;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "pk.user", cascade = CascadeType.ALL)
-    private List<CartItem> cartItems = new ArrayList<>();
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            })
+//    @JoinTable(name = "role_user",
+//            joinColumns = {@JoinColumn(name = "user_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+//    private List<Role> roles = new ArrayList<>();
 
-    public User () {
+    @OneToMany(mappedBy = "user")
+    List<Product> products = new ArrayList<>();
+
+    public User() {
     }
 
-    public User (String username, String password, String email, String name, String address, String phone) {
+    public User(String username, String password, String email, String name, String address, String phone) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.cartItems = new ArrayList<>();
     }
 
     public long getId() {
@@ -102,37 +110,5 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public List<CartItem> getCartItems() {
-        return cartItems;
-    }
-
-    public void setCartItems(List<CartItem> cartItems) {
-        this.cartItems = cartItems;
-    }
-
-    @Transient
-    public double getCartTotal () {
-        double sum = 0;
-
-        for (CartItem item : cartItems) {
-            sum += item.getTotalPrice();
-        }
-        return sum;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", cartItems=" + cartItems +
-                '}';
     }
 }

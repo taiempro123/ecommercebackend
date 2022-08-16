@@ -3,10 +3,7 @@ package com.tantai.dacnpm.entity;
 
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,15 +29,20 @@ public class Role extends BaseEntity {
     private String deletedInitials;
 
 
-
     @Column(nullable = true, unique = true)
     private String description;
 
-//    @ManyToMany(mappedBy = "roles")
-//    private List<User> users = new ArrayList<>();
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            },
+//            mappedBy = "roles")
+//    private List<User> User = new ArrayList<>();
 
     public Role() {
     }
+
     public String getName() {
         return name;
     }
