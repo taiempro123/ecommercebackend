@@ -43,7 +43,7 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(user);
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping(value = "/register")
     public ResponseEntity<?> registerUser (@RequestBody Map<String, Object> user) throws Exception {
         User savedUser = new User();
         User newUser = new User(
@@ -102,7 +102,7 @@ public class JwtAuthenticationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(tokenResponse);
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @PostMapping(value = "/login")
     public ResponseEntity<?> authenticateUser (@RequestBody Map<String, String> user) throws Exception {
         authenticate(user.get("username"), user.get("password"));
 

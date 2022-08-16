@@ -66,12 +66,6 @@ public class APIController {
         return new ResponseEntity<>(userService.updateUser(id, newUser), HttpStatus.OK);
     }
 
-//    @GetMapping("/users/{id}/cart")
-//    public ResponseEntity<List<CartItem>> getUserCart (@PathVariable("id") Long id) {
-//        System.out.println(userService.getUser(id).getCartItems().size());
-//        return new ResponseEntity<>(userService.getUser(id).getCartItems(), HttpStatus.OK);
-//    }
-
 
     @Transactional
     @DeleteMapping("/users/{id}")
