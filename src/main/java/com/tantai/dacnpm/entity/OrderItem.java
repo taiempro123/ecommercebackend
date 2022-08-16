@@ -1,8 +1,17 @@
 package com.tantai.dacnpm.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "order_item")
 public class OrderItem extends BaseEntity{
 
@@ -18,27 +27,7 @@ public class OrderItem extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     private Order order;
 
-    public double getPrice() {
-        return price;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Product product;
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }

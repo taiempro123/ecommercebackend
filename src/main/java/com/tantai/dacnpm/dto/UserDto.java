@@ -1,4 +1,4 @@
-package com.tantai.dacnpm.entity;
+package com.tantai.dacnpm.dto;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 

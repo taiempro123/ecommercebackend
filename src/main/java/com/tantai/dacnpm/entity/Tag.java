@@ -1,6 +1,11 @@
 package com.tantai.dacnpm.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -9,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tag")
 public class Tag extends BaseEntity{
     @Column(name = "title", nullable = false)
@@ -16,19 +25,5 @@ public class Tag extends BaseEntity{
     @ManyToMany(mappedBy = "tags")
     private List<Product> products = new ArrayList<>();
 
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }
