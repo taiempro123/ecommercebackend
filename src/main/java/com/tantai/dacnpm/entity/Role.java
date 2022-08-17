@@ -22,9 +22,17 @@ public class Role extends BaseEntity {
 
     @Column(name = "name", nullable = true, unique = true)
     private String name;
+    @Column(name = "deleted_name")
+    private String deletedName;
 
-    @Column(name = "code",nullable = true, unique = true)
-    private String code;
+    @Column(name = "initials", nullable = true, unique = true)
+    private String initials;
+
+    @Column(name = "deleted_initials")
+    private String deletedInitials;
+
+    @Column(nullable = true, unique = true)
+    private String description;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {

@@ -22,10 +22,6 @@ import java.util.List;
 public class Tag extends BaseEntity{
     @Column(name = "title", nullable = false)
     private String title;
-
-    @Column(name = "content", length = 100)
-    private String content;
-
     @ManyToMany(mappedBy = "tags")
     private List<Product> products = new ArrayList<>();
 

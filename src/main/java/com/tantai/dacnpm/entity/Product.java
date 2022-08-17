@@ -30,15 +30,19 @@ public class Product extends BaseEntity {
     @Column(nullable = false, precision = 10, scale = 2)
     private double price;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private Date addedOn = new Date();
+
     @Lob
     @Column(nullable = true, length = Integer.MAX_VALUE)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private byte[] image;
 
-    @Column(name = "discount")
+    @Column()
     private double discount;
 
-    @Column(name = "quantity", nullable = false)
+    @Column(nullable = false)
     private int quantity;
 
     @Temporal(TemporalType.TIMESTAMP)

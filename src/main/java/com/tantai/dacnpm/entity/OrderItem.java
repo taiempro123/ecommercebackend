@@ -15,13 +15,13 @@ import javax.persistence.*;
 @Table(name = "order_item")
 public class OrderItem extends BaseEntity{
 
-    @Column(name = "price",nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false, precision = 10, scale = 2)
     private double price;
 
-    @Column(name = "discount")
+    @Column()
     private double discount;
 
-    @Column(name = "quantity",nullable = false)
+    @Column(nullable = false)
     private int quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)

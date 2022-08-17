@@ -21,14 +21,10 @@ import java.util.List;
 @Table(name = "category")
 public class Category extends BaseEntity{
 
-    @Column(name = "title",nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String title;
-
-    @Column(name = "slug", length = 100)
+    @Column(nullable = false, length = 100)
     private String slug;
-
-    @Column(name = "content", length = 100)
-    private String content;
 
     @ManyToMany(mappedBy = "categories")
     private List<Product> products = new ArrayList<>();
