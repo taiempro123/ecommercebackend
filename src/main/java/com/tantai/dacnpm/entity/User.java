@@ -16,27 +16,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class User extends BaseEntity{
+    @Column(name = "user_name",unique = true, nullable = false, length = 35)
+    private String userName;
 
-    @Column(unique = true, nullable = false, length = 35)
-    private String username;
-
-    @Column(nullable = false, length = 128)
+    @Column(name = "password",nullable = false, length = 128)
     private String password;
 
-    @Column(unique = true, nullable = false, length = 100)
+    @Column(name = "email",unique = true, nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "name",nullable = false, length = 100)
     private String name;
 
-    @Column(nullable = false, length = 128)
+    @Column(name = "address",nullable = false, length = 128)
     private String address;
 
-    @Column(nullable = false, length = 15)
+    @Column(name = "phone",nullable = false, length = 15)
     private String phone;
 
     @ManyToMany(fetch = FetchType.LAZY,
@@ -55,8 +51,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Order> orders = new ArrayList<>();
 
-    public User(String username, String password, String email, String name, String address, String phone) {
-        this.username = username;
+    public User(String userName, String password, String email, String name, String address, String phone) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
         this.name = name;
