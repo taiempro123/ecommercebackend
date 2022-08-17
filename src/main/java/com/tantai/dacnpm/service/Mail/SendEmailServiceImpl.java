@@ -8,9 +8,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class SendEmailServiceImpl implements SendEmailService{
-    @Autowired
-    private  JavaMailSender javaMailSender;
+
+    private final  JavaMailSender javaMailSender;
     @Autowired
     private  UserServiceImpl userService;
 

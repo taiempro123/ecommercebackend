@@ -1,10 +1,8 @@
 package com.tantai.dacnpm.service.User;
 
-import com.tantai.dacnpm.exceptions.UserNotFoundException;
+import com.tantai.dacnpm.exceptions.NotFoundException;
 import com.tantai.dacnpm.entity.User;
 import com.tantai.dacnpm.repo.UserRepository;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,7 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(long id) {
         return repo.findById(id).orElseThrow(() ->
-                new UserNotFoundException("User by id " + id + " was not found."));
+                new NotFoundException("User by id " + id + " was not found."));
     }
 
     @Override
